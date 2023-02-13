@@ -45,7 +45,9 @@ def indexFolder(file, levels=2):
         # String to store content
         contents = ""
         # Iterate through folders
-        for f in folder.iterdir():
+        files = [f for f in folder.iterdir()]
+        files.sort(key=lambda f: f.stem)
+        for f in files:
             if f.is_dir() and not f.stem.startswith("_") and (f / "index.md").is_file():
                 # If current f is an indexed folder, get its files recursively and add a heading
                 contents += (
