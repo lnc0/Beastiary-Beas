@@ -1,0 +1,206 @@
+@import url('https://fontlibrary.org//face/opendyslexic');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Colr+Emoji+Glyf');
+
+:root {
+    --grey: #54494B;
+    --green: #ACFCD9;
+    --blue: #66C3FF;
+    --pink: #FFD5FF;
+    --orange: #FFA62B;
+}
+
+* {
+    font-family: 'OpenDyslexicRegular', 'Noto Colr Emoji Glyf';
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background-image: url("bg.png");
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+/** Page **/
+.wiki-page, #home-page-header {
+    position: relative;
+    margin: 4rem auto;
+    box-sizing: border-box;
+    background-color: white;
+    width: 21cm;
+    padding: 2cm;
+    padding-bottom: 3cm;
+    border-radius: 5mm;
+    /* Create 3d context */
+    z-index: 0;
+  }
+  .wiki-page > *:first-child {
+    margin-block-start: 0;
+  }
+
+/** Wiki generic **/
+
+  #home-page-header {
+    background-color: transparent;
+    padding-bottom: 0;
+    display: grid;
+    grid-auto-flow: row;
+    justify-items: center;
+    text-align: center;
+  }
+  #home-page-header h1,
+  #home-page-header h1 a {
+    font-size: 5rem;
+    text-decoration: none;
+  }
+  #home-page-header * {
+    color: black;
+  }
+  
+  #home-page-footer {
+    position: fixed;
+    left: 0;
+    bottom: 2rem;
+    width: 15rem;
+    margin-left: -17rem;
+  
+    text-align: left;
+    border-radius: 0 0.5rem 0.5rem 0;
+    padding: 1rem 2rem;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0.2;
+    color: white;
+  
+    transition: opacity 1s, margin-left 1s;
+  }
+  #home-page-footer * {
+    color: white;
+  }
+  #home-page-footer:hover {
+    opacity: 1;
+    margin-left: 0;
+  }
+  #home-page-footer::after {
+    content: "i";
+    position: absolute;
+    right: 1rem;
+    top: 0.5rem;
+  }
+  
+  nav {
+    display: grid;
+    grid-auto-flow: column;
+    gap: 1cm;
+  
+    font-size: 1.5rem;
+
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding-top: 5mm;
+    margin-top: 5mm;
+  }
+  
+  h1.sub,
+  h2.sub, 
+  h3.sub, 
+  h4.sub, 
+  h5.sub, 
+  h6.sub {
+    margin-top: 0;
+    margin-bottom: 0.5em;
+  }
+  
+  .ipa {
+    font-variant: normal;
+    font-weight: normal;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .ipa:before, .ipa:after {
+    content: "/";
+    display: inline;
+    font-size: .8em;
+    line-height: 1em;
+  }
+  
+  .suffix {
+    font-size: 1rem;
+  }
+
+  blockquote {
+    background-color: rgba(0, 0, 0, 0.01);
+    color: white;
+    padding: 12pt;
+    border-radius: 5mm;
+    margin: 2mm 2mm 2mm 2mm;
+  }
+  
+  blockquote > ul, 
+  blockquote > ul ul {
+    break-inside: avoid;
+    list-style-position: inside;
+    list-style-type: none;
+  }
+  blockquote > ul {
+    margin: 0;
+    padding-left: 0;
+  }
+  blockquote > ul ul {
+    margin-top: .5rem;
+    margin-bottom: -.5rem;
+  }
+  ul.contents:before {
+    content: "Contents";
+    font-weight: 700;
+    font-variant: small-caps;
+    font-size: 18pt;
+    margin-block-end: 2pt;
+  }
+  blockquote > ul li {
+    border-radius: 2mm;
+    padding: .5rem;
+  }
+  a {
+    color: var(--blue);
+    text-decoration-color: var(--pink);
+  }
+  a:hover {
+    color: var(--orange);
+    text-decoration-color: var(--pink);
+  }
+
+  blockquote > ul a {
+    color: var(--grey);
+    text-decoration: none;
+  }
+  blockquote > ul li a:hover {
+    color: black;
+    text-decoration: underline;
+    text-decoration-color: var(--pink);
+  }
+  
+  hex-grid {
+    column-span: all;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+  }
+  
+  ul.breadcrumbs {
+    position: absolute;
+    bottom: 1cm;
+    right: 2cm;
+    margin-top: 4rem;
+    opacity: 0.5;
+    list-style-type: none;
+  }
+  ul.breadcrumbs:hover {
+    opacity: 1;
+  }
+  ul.breadcrumbs li {
+    display: inline;
+  }
+  ul.breadcrumbs li:not(:first-child)::before {
+    content: ">";
+    margin: .5rem;
+  }
