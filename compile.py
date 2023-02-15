@@ -1,5 +1,6 @@
 from pathlib import Path
-import markdown as md
+import markdown
+import markmoji
 from copy import deepcopy
 import shutil
 import os
@@ -27,6 +28,8 @@ Path.normalize = normalize
 root = Path(__file__).parent
 build = root / "docs"
 source = root / "source"
+# Setup markdown parser
+md = markdown.Markdown(extensions=["extra", "admonition", "nl2br", markmoji.Markmoji()])
 # Read in template
 with open(str(root / "template.html"), "r", encoding=encoding) as f:
     template = f.read()
@@ -84,7 +87,6 @@ def buildPage(file):
         # Style IPA strings
         def _ipa(match):
             ipa = match.group(1)
-            print("SUCCESS", ipa)
             return f"<a class=ipa href=http://ipa-reader.xyz/?text={ipa}&voice=Brian>{ipa}</a>"
         content = re.sub(r"^\/(.{1,})\/$", _ipa, content, flags=re.MULTILINE)
         # Replace refs to markdown files with refs to equivalent html files
@@ -155,7 +157,7 @@ def buildPage(file):
 
     # Transpile html content
     content_md = preprocess(content_md)
-    content_html = md.markdown(content_md, extensions=["extra", "admonition", "nl2br"])
+    content_html = md.convert(content_md)
     content_html = postprocess(content_html)
     # Insert content into page
     page = page.replace("{{content}}", content_html)
